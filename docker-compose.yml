@@ -1,0 +1,19 @@
+version: '3.8'
+
+services:
+  app:
+    build: .
+    container_name: laravel_app
+    ports:
+      - "8080:80"   # Expondo a porta 80 no contêiner para a porta 8080 do host
+      - "8443:443"  # Expondo a porta 443 para HTTPS
+    volumes:
+      - .:/var/www/html
+    environment:
+      - SCRIPT_NAME=script.sh
+    networks:
+      - laravel_network
+
+networks:
+  laravel_network:
+    driver: bridge
