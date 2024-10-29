@@ -13,7 +13,7 @@ class LdapAuthServiceProvider extends ServiceProvider
      */
     public function register(): void
     {
-        $this->app()->singleton(LdapContract::class, function($app){
+        $this->app->singleton(LdapContract::class, function ($app) {
             return new LdapAuthService();
         });
     }
