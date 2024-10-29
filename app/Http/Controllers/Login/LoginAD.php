@@ -4,15 +4,17 @@ namespace App\Http\Controllers\Login;
 
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
+use LdapRecord\Connection;
+use LdapRecord\Auth\BindException as BindExecpt;
 
 class LoginAD extends Controller
 {
-    public function Login(SebraeUsersLoginRequest $request){
-        $request->validated();
+    public function Login(Request $request){
         // capturar o usuário e password
         $username = $request->username; #id do elemento html
         $password = $request->password; #id do elemento html
-
+        echo $username;
+        echo $password;
         /**
          * Documentação do ldaprecord.
          * Doc:https://ldaprecord.com/docs/core/v3/
@@ -51,7 +53,7 @@ class LoginAD extends Controller
             return redirect()->route('Login')->withErrors(['LDAP_ERROR' => 'Impossível se conectar ao servidor']);
         }finally{
 
-            return view('Login.ActiveDirectory');
+            return view('LoginActiveDirectory.Login');
         }
     }
 }
