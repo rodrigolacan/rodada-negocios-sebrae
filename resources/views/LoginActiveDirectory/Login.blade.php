@@ -39,7 +39,10 @@
 
             <!-- Botão de Login -->
             <button type="submit"
-                class="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition duration-200">Entrar</button>
+                class="w-full bg-blue-500 text-white font-semibold py-2 rounded-lg hover:bg-blue-600 transition duration-200">Entrar
+            </button>
+
+            <!-- Avisos de Erros -->
             @if ($errors->has('INVALID_USER'))
                 <div class="mt-4 text-center text-red-500">
                     Usuário ou Senha inválidos
