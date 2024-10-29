@@ -7,6 +7,7 @@ use Illuminate\Http\Request;
 use LdapRecord\Connection;
 use LdapRecord\Auth\BindException as BindExecpt;
 use Illuminate\Support\Facades\Cookie;
+use Illuminate\Support\Facades\Log;
 
 
 class LoginAD extends Controller
@@ -53,11 +54,13 @@ class LoginAD extends Controller
             }
 
             Cookie::queue('CID', strval($nameFull), 60);
+            Log::info('Cookie CID criado com sucesso! usuário autenticado');
         } catch (BindExecpt $e) {
-            return redirect()->route('Login')->withErrors(['LDAP_ERROR' => 'Impossível se conectar ao servidor']);
+            Log::warning('Erro ao realizar tentativa de conexão LDAP' . $e);
             echo "Usuário ou senha inváldio";
+            return redirect()->route('Login')->withErrors(['LDAP_ERROR' => 'Impossível se conectar ao servidor']);
         } finally {
-            return view('welcome');
+            echo "passa aqui de toda forma";
         }
     }
 }
