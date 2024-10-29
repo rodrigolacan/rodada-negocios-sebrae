@@ -30,7 +30,7 @@ class LoginAD extends Controller
          * @param config, é um array para ajudar a criar uma conexão com o ldap, cada parametro é capturado no arquivo .env
          * LEMBRE-SE DE CHAMAR AS CLASSES NECESSÁRIAS DO LDAPRECORD
          */
-        $config = config('ldap');
+        $config = config('ldap.connections.default');
         /**
          * Aós realizar a criação da conexão com new Connection($config) você pode usar um dos vários métodos utilizados para se comunicar com o LDAP
          * o método utilizado para authenticar é ->auth()->attempt(username, password)
