@@ -29,17 +29,7 @@ class LoginAD extends Controller
          * @param config, é um array para ajudar a criar uma conexão com o ldap, cada parametro é capturado no arquivo .env
          * LEMBRE-SE DE CHAMAR AS CLASSES NECESSÁRIAS DO LDAPRECORD
          */
-
-        $config = [
-            'hosts' => [getenv('LDAP_HOSTS')], // Host do servidor LDAP
-            'port' => getenv('LDAP_PORT'), // Porta do servidor LDAP (geralmente 389 para LDAP, 636 para LDAPS)
-            'base_dn' => getenv('LDAP_BSDN'), // Base DN do seu domínio AD
-            'username' => getenv('LDAP_USERNAME'), // Nome de usuário com permissão para fazer consultas no AD
-            'password' => getenv('LDAP_PASSWORD'), // Senha do usuário LDAP
-            'use_ssl' => false, // Define se a conexão deve usar SSL (LDAPS)
-            'use_tls' => false, // Define se a conexão deve usar TLS
-        ];
-
+        $config = config('ldap');
         /**
          * Aós realizar a criação da conexão com new Connection($config) você pode usar um dos vários métodos utilizados para se comunicar com o LDAP
          * o método utilizado para authenticar é ->auth()->attempt(username, password)
