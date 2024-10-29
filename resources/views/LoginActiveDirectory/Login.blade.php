@@ -15,14 +15,16 @@
         </div>
 
         <!-- Formulário de login -->
-        <form method="POST" action="{{ route('welcome') }}" class="space-y-4">
+        <form method="POST" action="{{ route('LoginService') }}" class="space-y-4">
             @csrf
             <!-- Campo de Usuário -->
             <div>
                 <label for="username" class="block text-sm font-medium text-gray-700">Usuário</label>
                 <input id="username" type="text"
                     class="mt-1 px-4 py-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="Digite seu usuário" required>
+                    placeholder="Digite seu usuário" 
+                    name='username'
+                    required>
             </div>
 
             <!-- Campo de Senha -->
@@ -30,7 +32,9 @@
                 <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
                 <input id="password" type="password"
                     class="mt-1 px-4 py-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="Digite sua senha" required>
+                    placeholder="Digite sua senha" 
+                    name='password'
+                    required>
             </div>
 
             <!-- Botão de Login -->
