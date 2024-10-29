@@ -9,12 +9,16 @@ use LdapRecord\Auth\BindException as BindExecpt;
 
 class LoginAD extends Controller
 {
-    public function Login(Request $request){
+    public function login(Request $request)
+    {
+        return view('LoginActiveDirectory.Login');
+    }
+
+    public function loginService(Request $request)
+    {
         // capturar o usuário e password
         $username = $request->username; #id do elemento html
         $password = $request->password; #id do elemento html
-        echo $username;
-        echo $password;
         /**
          * Documentação do ldaprecord.
          * Doc:https://ldaprecord.com/docs/core/v3/
@@ -37,23 +41,21 @@ class LoginAD extends Controller
         /**
          * Aós realizar a criação da conexão com new Connection($config) você pode usar um dos vários métodos utilizados para se comunicar com o LDAP
          * o método utilizado para authenticar é ->auth()->attempt(username, password)
-        */
+         */
 
         try {
             $connection = new Connection($config);
             $nameFull = $request->username . '@rr.sebrae.corp';
-            if (!$connection->auth()->attempt($name, strval($password))) {
+            if (!$connection->auth()->attempt($nameFull, strval($password))) {
                 return redirect()->route('Login')->withErrors(['INVALID_USER' => 'Usuário ou senha incorretos']);
             }
 
-            Cookie::queue('CID', strval($request->username), 60);
-            session(['USR' => $request->username]);
-            return $next($request);
+            echo "Usuário logado com sucesso";
         } catch (BindExecpt $e) {
             return redirect()->route('Login')->withErrors(['LDAP_ERROR' => 'Impossível se conectar ao servidor']);
-        }finally{
-
-            return view('LoginActiveDirectory.Login');
+            echo "Usuário ou senha inváldio";
+        } finally {
+            echo "Passou aqui";
         }
     }
 }
