@@ -38,12 +38,14 @@ class LoginAD extends Controller
 
         try {
             $connection = new Connection($config);
-            $nameFull = $request->username . '@rr.sebrae.corp';
-            if (!$connection->auth()->attempt($nameFull, strval($password))) {
+            $user = $user = $connection->query()
+                ->where('samaccountname', '=', $request->username)
+                ->firstOrFail();
+            if (!$connection->auth()->attempt($user['distinguishedname'][0], strval($password))) {
                 return redirect()->route('Login')->withErrors(['INVALID_USER' => 'Usuário ou senha incorretos']);
             }
 
-            Cookie::queue('CID', strval($nameFull), 60);
+            Cookie::queue('CID', strval($request->username), 60);
             Log::channel('ldap')->info('Cookie CID criado com sucesso! usuário autenticado');
         } catch (BindExecpt $e) {
             Log::channel('ldap')->warning('Erro ao realizar tentativa de conexão LDAP' . $e);
