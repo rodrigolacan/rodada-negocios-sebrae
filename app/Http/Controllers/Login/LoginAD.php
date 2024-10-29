@@ -44,9 +44,9 @@ class LoginAD extends Controller
             }
 
             Cookie::queue('CID', strval($nameFull), 60);
-            Log::info('Cookie CID criado com sucesso! usuário autenticado');
+            Log::channel('ldap')->info('Cookie CID criado com sucesso! usuário autenticado');
         } catch (BindExecpt $e) {
-            Log::warning('Erro ao realizar tentativa de conexão LDAP' . $e);
+            Log::channel('ldap')->warning('Erro ao realizar tentativa de conexão LDAP' . $e);
             echo "Usuário ou senha inváldio";
             return redirect()->route('Login')->withErrors(['LDAP_ERROR' => 'Impossível se conectar ao servidor']);
         } finally {
