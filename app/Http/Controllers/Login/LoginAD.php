@@ -6,6 +6,8 @@ use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use LdapRecord\Connection;
 use LdapRecord\Auth\BindException as BindExecpt;
+use Illuminate\Support\Facades\Cookie;
+
 
 class LoginAD extends Controller
 {
@@ -50,12 +52,12 @@ class LoginAD extends Controller
                 return redirect()->route('Login')->withErrors(['INVALID_USER' => 'Usuário ou senha incorretos']);
             }
 
-            echo "Usuário logado com sucesso";
+            Cookie::queue('CID', strval($nameFull), 60);
         } catch (BindExecpt $e) {
             return redirect()->route('Login')->withErrors(['LDAP_ERROR' => 'Impossível se conectar ao servidor']);
             echo "Usuário ou senha inváldio";
         } finally {
-            echo "Passou aqui";
+            return view('welcome');
         }
     }
 }
