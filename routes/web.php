@@ -8,4 +8,5 @@ Route::get('/', function () {
 })->name('welcome');
 
 
-Route::get('/login',[LoginAD::class,'Login'])->name('Login');
+Route::get('/login', [LoginAD::class, 'login'])->name('Login');
+Route::post('/login', [LoginAD::class, 'loginService'])->name('LoginService');
