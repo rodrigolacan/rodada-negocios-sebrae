@@ -28,7 +28,7 @@ class LoginAD extends Controller
         $password = $request->password; #id do elemento html
 
         if ($this->ldapService->isAuthenticate($username, $password) == false) {
-            redirect()->route('Login')->withErrors(['INVALID_USER' => 'Usuário ou senha incorretos']);
+            return redirect()->route('Login')->withErrors(['INVALID_USER' => 'Usuário ou senha incorretos']);
         }
 
         echo "usuário autenticado";
