@@ -15,6 +15,9 @@ class IsUserLogged
      */
     public function handle(Request $request, Closure $next): Response
     {
+        if (!$request->hasCookie('CID')) {
+            return redirect()->route('Login');
+        }
         return $next($request);
     }
 }
