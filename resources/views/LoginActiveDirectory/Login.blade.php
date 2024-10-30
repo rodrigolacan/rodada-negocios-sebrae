@@ -61,7 +61,7 @@
         <!-- Link para Redirecionamento -->
         <div class="text-center mt-6">
             <p class="text-sm text-gray-600">Ou</p>
-            <button onclick="loginLogoutAmei()" class="text-blue-500 font-medium hover:underline">Acessar o utilizando AMEI</button>
+            <button onclick="loginAmei()" class="text-blue-500 font-medium hover:underline">Acessar o utilizando AMEI</button>
         </div>
     </div>
 </body>
