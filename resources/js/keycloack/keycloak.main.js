@@ -20,7 +20,7 @@ keycloak
     if (auth) {
       keycloak.loadUserInfo().then(function (userInfo) {});
       keycloak.loadUserProfile().then(function (profile) {});
-      window.location.href = window.location.origin + '/home?token=' + keycloak.token;
+      window.location.href = window.location.origin + '/auth/amei/' + keycloak.token;
     }
 
     if (keycloak.tokenParsed) {
