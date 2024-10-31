@@ -5,13 +5,16 @@
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Login</title>
     <script src="https://amei.homolog.kubernetes.sebrae.com.br/auth/js/keycloak.js"></script>
-   @vite('resources/js/keycloack/keycloak.main.js')
+    <script src="https://base-estatico.sebrae.com.br/web-components/base-web-components-latest.min.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @vite('resources/js/keycloack/keycloak.main.js')
     @vite('resources/css/app.css')
 </head>
 
 <body class="bg-gray-100 flex items-center justify-center h-screen">
 
     <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-sm">
+        <base-account-profile id="BaSeAccountProfile"></base-account-profile>
         <div class="flex justify-center mb-6">
             <img src="{{ asset('img/sebrae.svg') }}" alt="Logo Sebrae" class="h-16 w-auto">
         </div>
@@ -61,7 +64,7 @@
         <!-- Link para Redirecionamento -->
         <div class="text-center mt-6">
             <p class="text-sm text-gray-600">Ou</p>
-            <button onclick="loginAmei()" class="text-blue-500 font-medium hover:underline">Acessar o utilizando AMEI</button>
+            <a onclick="loginAmei()" class="text-blue-500 font-medium hover:underline">Acessar o utilizando AMEI</a>
         </div>
     </div>
 </body>
