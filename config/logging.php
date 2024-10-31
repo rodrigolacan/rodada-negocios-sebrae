@@ -132,6 +132,11 @@ return [
             'path' => storage_path('logs/ldap.log'),
             'level' => 'info',
         ],
+        'jwt' => [
+            'driver' => 'single',
+            'path' => storage_path('logs/jwt.log'),
+            'level' => 'info',
+        ],
 
     ],
 

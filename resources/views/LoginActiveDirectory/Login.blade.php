@@ -4,6 +4,9 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Tela de Login</title>
+    <script src="https://amei.homolog.kubernetes.sebrae.com.br/auth/js/keycloak.js"></script>
+    <meta name="csrf-token" content="{{ csrf_token() }}">
+    @vite('resources/js/keycloack/keycloak.main.js')
     @vite('resources/css/app.css')
 </head>
 
@@ -59,11 +62,9 @@
         <!-- Link para Redirecionamento -->
         <div class="text-center mt-6">
             <p class="text-sm text-gray-600">Ou</p>
-            <a href="https://app.amei.com.br" class="text-blue-500 font-medium hover:underline">Acessar o utilizando
-                AMEI</a>
+            <a onclick="loginAmei()" class="text-blue-500 font-medium hover:underline">Acessar o utilizando AMEI</a>
         </div>
     </div>
-
 </body>
 
 </html>
