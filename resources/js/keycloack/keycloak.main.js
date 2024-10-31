@@ -1,5 +1,5 @@
 // auth.js
-window.keycloak = new Keycloak({
+/*window.keycloak = new Keycloak({
   url: 'https://amei.homolog.kubernetes.sebrae.com.br/auth',
   realm: 'externo',
   clientId: 'app-frontend',
@@ -78,4 +78,37 @@ function handler() {
   console.log('🔏 isAuthenticated', keycloak.authenticated ?? false);
   console.log('🔏 token', keycloak.token ?? '');
   console.log('🔏 tokenInfo', keycloak.tokenParsed ?? {});
-}
+}*/
+// keycloak.main.js
+import { keycloak, initKeycloak } from './keycloackConfig';
+import { setupAuthHandlers } from './authHandlers';
+import { loginAmei, handler } from './utils';
+import { initializeBaseAccountProfile } from './baseAccountProfile';
+
+let auth = false;
+
+initKeycloak()
+  .then((authenticated) => {
+    auth = authenticated;
+    if (auth) {
+      keycloak.loadUserInfo();
+      keycloak.loadUserProfile();
+    }
+    window.location.assign('/public')
+  })
+  .catch((e) => {
+    console.log(e);
+    if (e?.error === 'login_required') {
+      return keycloak.login();
+    }
+    alert('🤯 Erro ao inicializar');
+  });
+
+
+setupAuthHandlers();
+window.loginAmei = loginAmei;
+
+
+initializeBaseAccountProfile();
+
+
