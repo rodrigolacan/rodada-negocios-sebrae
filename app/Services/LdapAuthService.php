@@ -4,7 +4,6 @@ namespace App\Services;
 
 use LdapRecord\Connection;
 use LdapRecord\Auth\BindException as BindExecpt;
-use Illuminate\Support\Facades\Cookie;
 use Illuminate\Support\Facades\Log;
 use App\Contracts\LDAP\LdapContract;
 
@@ -36,7 +35,6 @@ class LdapAuthService implements LdapContract
                 return false;
             }
 
-            Cookie::queue('CID', strval($username), 60);
             Log::channel('ldap')->info('Cookie CID criado com sucesso! Usuário autenticado: ' . $username);
             return true;
         } catch (BindExecpt $e) {
