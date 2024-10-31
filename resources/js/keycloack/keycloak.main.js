@@ -1,13 +1,12 @@
 // auth.js
-
-var keycloak = new Keycloak({
+window.keycloak = new Keycloak({
   url: 'https://amei.homolog.kubernetes.sebrae.com.br/auth',
   realm: 'externo',
   clientId: 'app-frontend',
 });
 
 var auth = false;
-
+var userProfile;
 keycloak
   .init({
     enableLogging: true,
@@ -18,16 +17,8 @@ keycloak
     auth = authenticated;
 
     if (auth) {
-      keycloak.loadUserInfo().then(function (userInfo) {});
+      keycloak.loadUserInfo().then(function (userInfo) {      });
       keycloak.loadUserProfile().then(function (profile) {});
-      window.location.href = window.location.origin + '/auth/amei/' + keycloak.token;
-    }
-
-    if (keycloak.tokenParsed) {
-      console.log(
-        'token',
-        keycloak.token
-      );
     }
   })
   .catch(function (e) {
@@ -41,31 +32,23 @@ keycloak
 keycloak.onReady = () => {
   console.log('😃 pronto');
 
-  // Define a função loginLogoutAmei após a inicialização do Keycloak
   window.loginAmei = function () {
     if (auth) {
-      keycloak.logout();
+      window.location.assign('/auth/amei/token/'+keycloak.token);
       return;
     }
-    keycloak.login();
-  };
+    window.keycloak.login();
+  }
 };
 
 keycloak.onAuthSuccess = () => {};
-
 keycloak.onAuthRefreshSuccess = () => {};
-
 keycloak.onAuthError = (error) => {
   console.log('autenticação error', error);
   handler();
 };
-
 keycloak.onAuthRefreshError = () => {};
-
-keycloak.onAuthLogout = () => {
-  console.log('👋 Realizou o logout');
-};
-
+keycloak.onAuthLogout = () => {};
 keycloak.onTokenExpired = () => {
   console.log('🔄 token expirou');
   keycloak
@@ -87,6 +70,9 @@ keycloak.onTokenExpired = () => {
     )
     .finally(() => console.log('⚠️ finally updateToken'));
 };
+
+var BaSeAccountProfile = document.querySelector('#BaSeAccountProfile');
+BaSeAccountProfile.keycloak = keycloak;
 
 function handler() {
   console.log('🔏 isAuthenticated', keycloak.authenticated ?? false);
