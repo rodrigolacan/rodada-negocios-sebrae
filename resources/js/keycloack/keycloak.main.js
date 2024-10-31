@@ -94,7 +94,6 @@ initKeycloak()
       keycloak.loadUserInfo();
       keycloak.loadUserProfile();
     }
-    window.location.assign('/public')
   })
   .catch((e) => {
     console.log(e);
@@ -103,7 +102,6 @@ initKeycloak()
     }
     alert('🤯 Erro ao inicializar');
   });
-
 
 setupAuthHandlers();
 window.loginAmei = loginAmei;
