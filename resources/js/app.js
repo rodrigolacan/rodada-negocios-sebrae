@@ -27,3 +27,40 @@ document.addEventListener('click', (event) => {
         toggleMenu(); // Fecha o menu se estiver aberto e o clique foi fora dele
     }
 });
+
+// Scroll offset para navegação com âncoras
+document.querySelectorAll('a[href^="#"]').forEach(anchor => {
+    anchor.addEventListener("click", function (e) {
+        e.preventDefault();
+
+        // Fecha o menu mobile ao clicar em um link
+        if (!mobileMenu.classList.contains('hidden')) {
+            toggleMenu();
+        }
+
+        // Define o elemento alvo e calcula o offset
+        const targetElement = document.querySelector(this.getAttribute("href"));
+        const offsetTop = targetElement.offsetTop - 100; // Ajuste a altura para compensar o navbar
+
+        // Rola suavemente até o offset calculado
+        window.scrollTo({
+            top: offsetTop,
+            behavior: "smooth"
+        });
+    });
+});
+
+document.querySelectorAll('a[href="#"]').forEach(anchor => {
+    anchor.addEventListener('click', function(e) {
+        e.preventDefault();
+        window.scrollTo({
+            top: 0,
+            behavior: 'smooth'
+        });
+    });
+});
+
+AOS.init({
+    duration: 800, // duração da animação em milissegundos
+    easing: 'ease-in-out', // tipo de easing
+});
