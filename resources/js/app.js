@@ -40,7 +40,7 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 
         // Define o elemento alvo e calcula o offset
         const targetElement = document.querySelector(this.getAttribute("href"));
-        const offsetTop = targetElement.offsetTop - 100; // Ajuste a altura para compensar o navbar
+        const offsetTop = targetElement.offsetTop - 80; // Ajuste a altura para compensar o navbar
 
         // Rola suavemente até o offset calculado
         window.scrollTo({
@@ -58,9 +58,4 @@ document.querySelectorAll('a[href="#"]').forEach(anchor => {
             behavior: 'smooth'
         });
     });
-});
-
-AOS.init({
-    duration: 800, // duração da animação em milissegundos
-    easing: 'ease-in-out', // tipo de easing
 });
