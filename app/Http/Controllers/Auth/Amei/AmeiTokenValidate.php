@@ -33,7 +33,7 @@ class AmeiTokenValidate extends Controller
             Cookie::queue('JTI', strval($tokenDecoded['jti']), $cookieExpiration);
             Cookie::queue('CID', strval($token), $cookieExpiration);
 
-            return redirect()->route('welcome');
+            return redirect()->route('main');
             return;
         } catch (\Exception $e) {
             Log::channel('jwt')->error('Token inválido ou erro ao decodificar (Log do controller): ' . $e->getMessage());
