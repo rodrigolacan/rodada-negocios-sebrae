@@ -30,8 +30,7 @@ class AmeiTokenValidate extends Controller
             $cookieExpiration = $expTime - $currentTimestamp;
 
             // Define a expiração do cookie com a mesma duração do token
-            Cookie::queue('JTI', strval($tokenDecoded['jti']), $cookieExpiration);
-            Cookie::queue('CID', strval($token), $cookieExpiration);
+            Cookie::queue('AMCID', strval($token), $cookieExpiration);
 
             return redirect()->route('index');
             return;
