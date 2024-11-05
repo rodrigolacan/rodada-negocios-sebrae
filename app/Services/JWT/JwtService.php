@@ -73,4 +73,28 @@ class JwtService implements JwtContract
             Log::channel('jwt')->warning('Erro inesperado: ' . $e->getMessage());
         }
     }
+
+    public function decodeHS256($token, $key)
+    {
+        try {
+            $decode = JWT::decode($token, new Key($key, 'HS256'));
+            return $decode;
+        } catch (ExpiredException $e) {
+            // Token expirado
+            Log::channel('jwt')->warning('token expirado: ' . $e->getMessage());
+            throw new \Exception('Token expirado.', 401);
+        } catch (SignatureInvalidException $e) {
+            // Assinatura do token inválida
+            throw new \Exception('Assinatura do token inválida.', 401);
+            Log::channel('jwt')->warning('Assinatura do token inválida: ' . $e->getMessage());
+        } catch (BeforeValidException $e) {
+            // Token ainda não é válido
+            throw new \Exception('Token não é válido ainda.', 401);
+            Log::channel('jwt')->warning('Token não é valido ainda: ' . $e->getMessage());
+        } catch (\Exception $e) {
+            // Captura qualquer outra exceção
+            throw new \Exception('Erro inesperado: ' . $e->getMessage(), 500);
+            Log::channel('jwt')->warning('Erro inesperado: ' . $e->getMessage());
+        }
+    }
 }
