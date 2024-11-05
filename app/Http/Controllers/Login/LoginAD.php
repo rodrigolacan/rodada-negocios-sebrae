@@ -37,7 +37,7 @@ class LoginAD extends Controller
 
         $userData = $this->ldapService->getUserData($username);
 
-        $key = getenv('APP_KEY');
+        $key = trim(env('APP_KEY'));
 
         $payload = $this->jwtService->encodeHS256($userData, $key);
 
