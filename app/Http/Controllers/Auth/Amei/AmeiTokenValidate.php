@@ -21,7 +21,7 @@ class AmeiTokenValidate extends Controller
         $keyPath = app_path('Keys/AMEI/public_key.pem');
 
         try {
-            $tokenDecoded = $this->jwtService->decode($token, $keyPath);
+            $tokenDecoded = $this->jwtService->decodeRS256($token, $keyPath);
             // Extrai o tempo de expiração do token
             $expTime = $tokenDecoded['exp']; // Timestamp Unix
             $currentTimestamp = time(); // Timestamp atual
