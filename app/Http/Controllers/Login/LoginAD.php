@@ -2,6 +2,7 @@
 
 namespace App\Http\Controllers\Login;
 
+use App\Contracts\JWT\JwtContract;
 use App\Http\Controllers\Controller;
 use Illuminate\Http\Request;
 use App\Contracts\LDAP\LdapContract;
@@ -11,10 +12,12 @@ use Illuminate\Support\Facades\Cookie;
 class LoginAD extends Controller
 {
     protected $ldapService;
+    protected $jwtService;
 
-    public function __construct(LdapContract $ldapService)
+    public function __construct(LdapContract $ldapService, JwtContract $jwtService)
     {
         $this->ldapService = $ldapService;
+        $this->jwtService = $jwtService;
     }
 
     public function login(Request $request)
@@ -32,7 +35,13 @@ class LoginAD extends Controller
             return redirect()->route('Login')->withErrors(['INVALID_USER' => 'Usuário ou senha incorretos']);
         }
 
-        Cookie::queue('CID', strval($username), 60);
+        $userData = $this->ldapService->getUserData($username);
+
+        $key = getenv('APP_KEY');
+
+        $payload = $this->jwtService->encodeHS256($userData, $key);
+
+        Cookie::queue('CID', $payload, time() + 3600 / 60);
 
         return redirect()->route('index');
     }
