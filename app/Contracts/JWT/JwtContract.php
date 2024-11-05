@@ -4,5 +4,7 @@ namespace App\Contracts\JWT;
 
 interface JwtContract
 {
-    public function decode($token, $keyPath): array;
+    public function decodeRS256($token, $keyPath): array;
+
+    public function encodeHS256($payload, $key);
 }
