@@ -5,7 +5,11 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Index Page</title>
+    <script src="https://amei.homolog.kubernetes.sebrae.com.br/auth/js/keycloak.js"></script>
+    <script src="https://base-estatico.sebrae.com.br/web-components/base-web-components-latest.min.js"></script>
     @vite('resources/css/app.css') <!-- ou o método que você usa para compilar o Tailwind -->
+    @vite('resources/js/keycloack/keycloak.main.js')
+    @vite('resources/js/pages/home/navbar/navbar.js')
 </head>
 
 <body class="bg-custom-radial min-h-screen flex flex-col">
@@ -17,6 +21,7 @@
 
         <!-- Menus ao centro -->
         <div class="flex justify-center space-x-8 text-[#062146] font-poppins font-semibold">
+            <base-account-profile id="AmeiAccountProfile"></base-account-profile>
             <a href="#" class="hover:underline">Dashboard</a>
             <a href="#" class="hover:underline">Eventos</a>
             <a href="#" class="hover:underline">Relatórios</a>

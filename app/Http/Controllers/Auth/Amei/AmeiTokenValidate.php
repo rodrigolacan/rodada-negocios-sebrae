@@ -21,7 +21,7 @@ class AmeiTokenValidate extends Controller
         $keyPath = app_path('Keys/AMEI/public_key.pem');
 
         try {
-            $tokenDecoded = $this->jwtService->decode($token, $keyPath);
+            $tokenDecoded = $this->jwtService->decodeRS256($token, $keyPath);
             // Extrai o tempo de expiração do token
             $expTime = $tokenDecoded['exp']; // Timestamp Unix
             $currentTimestamp = time(); // Timestamp atual
@@ -30,10 +30,9 @@ class AmeiTokenValidate extends Controller
             $cookieExpiration = $expTime - $currentTimestamp;
 
             // Define a expiração do cookie com a mesma duração do token
-            Cookie::queue('JTI', strval($tokenDecoded['jti']), $cookieExpiration);
-            Cookie::queue('CID', strval($token), $cookieExpiration);
+            Cookie::queue('AMCID', strval($token), $cookieExpiration);
 
-            return redirect()->route('welcome');
+            return redirect()->route('index');
             return;
         } catch (\Exception $e) {
             Log::channel('jwt')->error('Token inválido ou erro ao decodificar (Log do controller): ' . $e->getMessage());
