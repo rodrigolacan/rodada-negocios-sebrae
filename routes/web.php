@@ -7,11 +7,12 @@ use App\Http\Controllers\Auth\Amei\AmeiTokenValidate;
 use App\Http\Controllers\Login\LoginAmei;
 
 Route::get('/', function () {
-    return view('welcome');
-})->name('welcome')->middleware(IsUserLogged::class);
+    return view('pages.welcome');
+})->name('welcome');
 
-//Rota de authenticação JWT
-Route::get('/auth/amei/token/{token}', [AmeiTokenValidate::class, 'tokenValidate'])->name('AuthTokenAmei');
+Route::get('/index', function () {
+    return view('pages.index');
+})->name('index');
 
 
 Route::get('/login', [LoginAD::class, 'login'])->name('Login');
