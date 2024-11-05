@@ -19,7 +19,7 @@ class LoginAD extends Controller
 
     public function login(Request $request)
     {
-        return view('LoginActiveDirectory.Login');
+        return view('loginActiveDirectory.login');
     }
 
     public function loginService(Request $request)
@@ -34,6 +34,6 @@ class LoginAD extends Controller
 
         Cookie::queue('CID', strval($username), 60);
 
-        return redirect()->route('welcome');
+        return redirect()->route('index');
     }
 }
