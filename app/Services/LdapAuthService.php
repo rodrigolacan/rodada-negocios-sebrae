@@ -47,4 +47,37 @@ class LdapAuthService implements LdapContract
 
         return false;
     }
+
+    /**
+     * Retorna os dados básicos do usuário a partir do samaccountname.
+     *
+     * @param string $username
+     * @return array|null
+     */
+    public function getUserData(string $username): ?array
+    {
+        $config = config('ldap.connections.default');
+
+        try {
+            $connection = new Connection($config);
+
+            $user = $connection->query()
+                ->where('samaccountname', '=', $username)
+                ->firstOrFail();
+
+            return [
+                'sub' => $user['samaccountname'][0] ?? null,
+                'email' => $user['mail'][0] ?? null,
+                'name' => $user['displayname'][0] ?? null,
+                'distinguishedname' => $user['distinguishedname'][0] ?? null,
+                'auth_type' => 'ldap',
+                'roles' => ['user'],
+                'iat' => time(),
+                'exp' => time() + 3600
+            ];
+        } catch (\Exception $e) {
+            Log::channel('ldap')->error('Erro ao buscar dados do usuário: ' . $e->getMessage());
+            return null;
+        }
+    }
 }
