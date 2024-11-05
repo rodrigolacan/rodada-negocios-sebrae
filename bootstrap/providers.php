@@ -2,7 +2,6 @@
 
 return [
     App\Providers\AppServiceProvider::class,
-    App\Providers\LDAP\ActiveDirecotoryAuth::class,
-    App\Providers\LDAP\AuthLdapProvider::class,
+    App\Providers\JWT\JwtServiceProvider::class,
     App\Providers\LDAP\LdapAuthServiceProvider::class,
 ];
