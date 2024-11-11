@@ -1,7 +1,11 @@
 @extends('layouts.main')
 
-@section('header')
-    @include('sections.header')
+@section('head')
+    @include('sections.head')
+@endsection
+
+@section('navbar')
+    @include('sections.navbar')
 @endsection
 
 @section('content')

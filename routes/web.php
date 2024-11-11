@@ -10,6 +10,10 @@ Route::get('/', function () {
     return view('pages.welcome');
 })->name('welcome');
 
+Route::get('/login-selection', function () {
+    return view('pages.login.login_selection');
+})->name('login_selection');
+
 Route::get('/index', [IndexController::class, 'index'])->name('index')->middleware(IsUserLogged::class);
 
 #Rotas de autenticação
