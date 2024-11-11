@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('head')
-    @include('sections.welcome.head')
+    @include('sections.default.head')
 @endsection
 
 @section('navbar')

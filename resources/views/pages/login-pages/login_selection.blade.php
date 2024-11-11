@@ -1,7 +1,7 @@
 @extends('layouts.main')
 
 @section('head')
-    @include('sections.head')
+    @include('sections.default.head')
 @endsection
 
 @section('content')

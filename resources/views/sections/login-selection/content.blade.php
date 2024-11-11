@@ -23,7 +23,7 @@
                 </div>
             </a>
             <!-- Opção de login Organizador -->
-            <a href="#" class="block hover:shadow-2xl transition-shadow duration-300">
+            <a href="{{ route('login') }}" class="block hover:shadow-2xl transition-shadow duration-300">
                 <div class="flex items-center hover:scale-105 transform transition-transform duration-300">
                     <div class="w-1/2 rounded-bl-lg overflow-hidden">
                         <img src="{{ asset('img/manager.jpg') }}" alt="Organizador"
