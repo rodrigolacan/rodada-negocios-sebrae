@@ -39,4 +39,6 @@
     <!-- Texto de Direitos Autorais -->
     <p class="font-bold uppercase text-center mt-6 mb-5 text-xs md:text-sm">© SEBRAE-RR 2024 - TODOS OS DIREITOS
         RESERVADOS</p>
+
+    @vite('resources/js/app.js')
 </footer>

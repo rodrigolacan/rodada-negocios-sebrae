@@ -22,7 +22,7 @@ class LoginAD extends Controller
 
     public function login(Request $request)
     {
-        return view('loginActiveDirectory.login');
+        return view('pages.login-pages.login');
     }
 
     public function loginService(Request $request)

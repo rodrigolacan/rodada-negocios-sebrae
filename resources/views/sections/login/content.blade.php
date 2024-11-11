@@ -1,21 +1,10 @@
-<html lang="pt-br">
-
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Tela de Login</title>
-    <script src="https://amei.homolog.kubernetes.sebrae.com.br/auth/js/keycloak.js"></script>
-    <meta name="csrf-token" content="{{ csrf_token() }}">
-    @vite('resources/js/keycloack/keycloak.main.js')
-    @vite('resources/css/app.css')
-</head>
-
-<body class="bg-gray-100 flex items-center justify-center h-screen">
-
+<main class="bg-gray-100 flex items-center justify-center h-screen">
     <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-sm">
-        <div class="flex justify-center mb-6">
-            <img src="{{ asset('img/sebrae.svg') }}" alt="Logo Sebrae" class="h-16 w-auto">
+        <div class="flex justify-center mb-1">
+            <!-- Logo -->
+            <x-logo />
         </div>
+        <x-powered-by />
 
         <!-- Formulário de login -->
         <form method="POST" action="{{ route('LoginService') }}" class="space-y-4">
@@ -25,9 +14,7 @@
                 <label for="username" class="block text-sm font-medium text-gray-700">Usuário</label>
                 <input id="username" type="text"
                     class="mt-1 px-4 py-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="Digite seu usuário" 
-                    name='username'
-                    required>
+                    placeholder="Digite seu usuário" name='username' required>
             </div>
 
             <!-- Campo de Senha -->
@@ -35,9 +22,7 @@
                 <label for="password" class="block text-sm font-medium text-gray-700">Senha</label>
                 <input id="password" type="password"
                     class="mt-1 px-4 py-2 border rounded-lg w-full focus:outline-none focus:ring-2 focus:ring-blue-400"
-                    placeholder="Digite sua senha" 
-                    name='password'
-                    required>
+                    placeholder="Digite sua senha" name='password' required>
             </div>
 
             <!-- Botão de Login -->
@@ -58,13 +43,5 @@
                 </div>
             @endif
         </form>
-
-        <!-- Link para Redirecionamento -->
-        <div class="text-center mt-6">
-            <p class="text-sm text-gray-600">Ou</p>
-            <a onclick="loginAmei()" class="text-blue-500 font-medium hover:underline">Acessar o utilizando AMEI</a>
-        </div>
     </div>
-</body>
-
-</html>
+</main>
