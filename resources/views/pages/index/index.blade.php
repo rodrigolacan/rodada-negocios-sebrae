@@ -4,6 +4,7 @@
     @include('sections.default.head')
 @endsection
 
-@section('content')
-    @include('sections.login-selection.content')
+@section('navbar')
+    @include('sections.app.navbar')
+    <x-js-import />
 @endsection
