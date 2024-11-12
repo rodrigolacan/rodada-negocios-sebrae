@@ -4,6 +4,7 @@ import './bootstrap';
 const menuToggle = document.getElementById('menu-toggle');
 const mobileMenu = document.getElementById('mobile-menu');
 const menuIcon = document.querySelector('.menu-icon');
+const dropdownProfile = document.getElementById('dropdown-profile');
 
 // Função para abrir ou fechar o menu
 const toggleMenu = () => {
@@ -11,6 +12,11 @@ const toggleMenu = () => {
     menuIcon.children[0].classList.toggle('rotate-45');
     menuIcon.children[1].classList.toggle('opacity-0');
     menuIcon.children[2].classList.toggle('-rotate-45');
+
+    // Fecha o dropdown se o menu for aberto
+    if (!dropdownProfile.classList.contains('hidden')) {
+        dropdownProfile.classList.add('hidden');
+    }
 };
 
 // Evento para abrir/fechar o menu ao clicar no ícone
@@ -51,11 +57,24 @@ document.querySelectorAll('a[href^="#"]').forEach(anchor => {
 });
 
 document.querySelectorAll('a[href="#"]').forEach(anchor => {
-    anchor.addEventListener('click', function(e) {
+    anchor.addEventListener('click', function (e) {
         e.preventDefault();
         window.scrollTo({
             top: 0,
             behavior: 'smooth'
         });
     });
+});
+
+// Evento para alternar a exibição do dropdown ao clicar no avatar
+document.getElementById('avatar-toggle').addEventListener('click', function () {
+    dropdownProfile.classList.toggle('hidden');
+});
+
+// Evento para fechar o dropdown ao clicar fora dele
+document.addEventListener('click', function (event) {
+    var toggle = document.getElementById('avatar-toggle');
+    if (!dropdownProfile.contains(event.target) && !toggle.contains(event.target)) {
+        dropdownProfile.classList.add('hidden');
+    }
 });
