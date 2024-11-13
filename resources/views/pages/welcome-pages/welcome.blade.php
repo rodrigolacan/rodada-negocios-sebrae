@@ -14,4 +14,6 @@
 
 @section('footer')
     @include('sections.welcome.footer')
+    @vite('resources/js/app.js')
+    @vite('resources/js/components/menu.js')
 @endsection

@@ -6,5 +6,10 @@
 
 @section('navbar')
     @include('sections.app.navbar')
-    <x-js-import />
+@endsection
+
+@section('content')
+    @include('sections.app.content')
+    @vite('resources/js/components/menu.js')
+    @vite('resources/js/components/dropdown.js')
 @endsection
