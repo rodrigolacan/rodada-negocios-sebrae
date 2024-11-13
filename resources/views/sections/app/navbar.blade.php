@@ -10,7 +10,7 @@
                 <div>Joseph</div>
             </div>
             <div id="dropdown-profile"
-                class="fixed md:hidden hidden space-y-1 py-4 px-6 bg-white shadow-lg rounded-lg border border-[#D1D5DB] left-0 top-20 z-10">
+                class="fixed hidden hidden space-y-1 py-4 px-6 bg-white shadow-lg rounded-lg border border-[#D1D5DB] left-0 top-20 z-10">
                 <!-- Exibir os itens do menu -->
                 <a href="#"
                     class="block text-lg hover:bg-gray-200 rounded-full p-2 transition duration-300 font-bold text-right">
