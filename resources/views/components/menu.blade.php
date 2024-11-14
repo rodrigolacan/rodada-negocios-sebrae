@@ -1,4 +1,4 @@
-<div class="hidden md:flex items-center space-x-2">
+<div class="hidden lg:flex items-center space-x-2">
     <!-- Exibir os itens do menu -->
     @foreach ($menuItems as $item)
         <a href="{{ $item['href'] }}" class="text-lg hover:bg-gray-200 rounded-full p-2 transition duration-300">
@@ -15,7 +15,7 @@
 </div>
 
 <!-- Menu Mobile -->
-<div id="mobile-menu" class="fixed md:hidden hidden space-y-1 py-4 px-6 bg-white shadow-lg rounded-lg border border-[#D1D5DB] right-0 top-20 z-10">
+<div id="mobile-menu" class="fixed lg:hidden hidden space-y-1 py-4 px-6 bg-white shadow-lg rounded-lg border border-[#D1D5DB] right-0 top-20 z-10">
     <!-- Exibir os itens do menu -->
     @foreach ($menuItems as $item)
         <a href="{{ $item['href'] }}" class="block text-lg hover:bg-gray-200 rounded-full p-2 transition duration-300 font-bold text-right">

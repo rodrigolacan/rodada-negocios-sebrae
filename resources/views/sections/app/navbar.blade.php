@@ -35,12 +35,12 @@
         ]" :showLogin="false" />
 
         <!-- Logo (lado direito) em md e acima -->
-        <div class="flex-shrink-0 flex items-center mr-2 invisible md:visible">
+        <div class="flex-shrink-0 flex items-center mr-2 invisible lg:visible">
             <x-logo />
         </div>
 
         <!-- Mobile Menu Button -->
-        <div class="md:hidden flex items-center">
+        <div class="lg:hidden flex items-center">
             <div class="flex-shrink-0 flex items-center mr-2">
                 <x-logo />
             </div>
