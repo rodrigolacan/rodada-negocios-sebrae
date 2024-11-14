@@ -1,6 +1,6 @@
 <!-- Div do Card -->
 <div
-    class="mt-5 bg-transparent border border-[#d9d9d9] rounded-2xl h-56 w-auto max-w-3xl mx-auto p-5 grid grid-cols-3 w-full h-full max-w-md">
+    class="mt-5 bg-transparent border border-[#d9d9d9] rounded-2xl h-56 w-auto max-w-3xl mx-auto p-5 grid grid-cols-3 w-full h-full">
     <!-- Coluna da esquerda (imagem) -->
     <div class="col-span-1 h-56 w-32 ">
         <img src="{{ asset('img/imageforchange.svg') }}" alt="Imagem"
