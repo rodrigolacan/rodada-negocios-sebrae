@@ -16,7 +16,5 @@
     </div>
 
     <!-- Div do Card -->
-    <div class="mt-5 flex items-center bg-transparent border border-[#d9d9d9] rounded-[17px] 
-            h-56 w-auto max-w-5xl mx-auto">
-    </div>
+    <x-card-ofertas />
 </main>
