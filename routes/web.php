@@ -7,11 +7,11 @@ use App\Http\Controllers\Auth\Amei\AmeiTokenValidate;
 use App\Http\Controllers\Pages\Index\IndexController;
 
 Route::get('/', function () {
-    return view('pages.welcome-pages.welcome');
+    return view('pages.welcome');
 })->name('welcome');
 
 Route::get('/login-selection', function () {
-    return view('pages.login-pages.login_selection');
+    return view('pages.login_selection');
 })->name('login_selection');
 
 Route::get('/index', [IndexController::class, 'index'])->name('index')->middleware(IsUserLogged::class);
