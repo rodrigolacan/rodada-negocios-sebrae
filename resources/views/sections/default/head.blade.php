@@ -4,4 +4,5 @@
     <title>ConectaBiz</title>
     @vite('resources/css/app.css') <!-- Certifique-se de que o Vite está funcionando -->
     <link rel="icon" href="{{ asset('img/logo-conectabiz.ico') }}" type="image/x-icon">
+    @livewireStyles
 </head>

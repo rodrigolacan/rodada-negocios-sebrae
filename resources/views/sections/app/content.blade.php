@@ -44,7 +44,9 @@
                 </div>
             </div>
         </div>
+        @livewire('calendar');
 
     </div>
 
 </main>
+@livewireScripts
