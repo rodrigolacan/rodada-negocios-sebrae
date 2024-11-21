@@ -16,8 +16,6 @@ export default defineConfig({
             input: [
                 'resources/css/app.css',
                  'resources/js/app.js',
-                 'resources/js/components/dropdown.js',
-                 'resources/js/components/menu.js',
                  ...getAllFilesFromFolder('resources/js/keycloack', ['.js']),
                  ...getAllFilesFromFolder('resources/js/pages/home/navbar/', ['.js'])
                 ],

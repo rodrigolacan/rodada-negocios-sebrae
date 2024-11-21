@@ -10,5 +10,7 @@
 
     @yield('footer')
 </body>
-
+    @livewireScripts
+    <script src="https://amei.homolog.kubernetes.sebrae.com.br/auth/js/keycloak.js"></script>
+    @vite('resources/js/keycloack/keycloak.main.js')
 </html>

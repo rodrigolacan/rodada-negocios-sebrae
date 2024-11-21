@@ -15,17 +15,10 @@
             </div>
 
             <!-- Menu -->
-            <x-menu :menuItems="[
-                ['href' => '#sobre', 'text' => 'Sobre a plataforma'],
-                ['href' => '#como-funciona', 'text' => 'Como Funciona?'],
-                ['href' => '#recursos', 'text' => 'Recursos e Benefícios'],
-            ]" :showLogin="true" />
-
-            <!-- Mobile Menu Button -->
-            <div class="md:hidden flex items-center">
-                <x-button-menu />
-            </div>
-        </nav>
+            @livewire('menu', [
+                'menuItems' => [['href' => '#sobre', 'text' => 'Sobre a plataforma'], ['href' => '#como-funciona', 'text' => 'Como Funciona?'], ['href' => '#recursos', 'text' => 'Recursos e Benefícios']],
+                'showLogin' => true,
+            ])
     </header>
 @endsection
 
@@ -154,7 +147,4 @@
         <p class="font-bold uppercase text-center mt-6 mb-5 text-xs md:text-sm">© SEBRAE-RR 2024 - TODOS OS DIREITOS
             RESERVADOS</p>
     </footer>
-
-    @vite('resources/js/app.js')
-    @vite('resources/js/components/menu.js')
 @endsection
