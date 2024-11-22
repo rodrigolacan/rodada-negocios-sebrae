@@ -23,7 +23,7 @@
             ])
             <!-- Logo (lado direito) em md e acima -->
             <div class="flex-shrink-0 flex items-center mr-2 hidden lg:block">
-                <x-logo />
+                @livewire('logo')
             </div>
         </nav>
     </header>
@@ -48,8 +48,7 @@
                 <span class="font-poppins text-base font-semibold md:text-xl">Ofertas</span>
             </div>
             <!-- Div do Card -->
-            <x-card-ofertas />
-            <x-card-ofertas />
+            @livewire('card')
 
             <!-- Seção Ofertas -->
             <div class="mt-5 flex items-center">

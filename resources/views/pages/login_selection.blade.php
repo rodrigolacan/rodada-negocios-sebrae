@@ -9,10 +9,10 @@
         <div class="w-[393px] bg-white rounded-md p-4">
             <!-- Logo centralizada -->
             <div class="flex justify-center mb-1">
-                <x-logo />
+                @livewire('logo')
             </div>
             <!-- Div "Powered by" com logo -->
-            <x-powered-by />
+            @livewire('powered-by')
 
             <h1 class="text-center text-xl font-light mb-8">Escolha a sua forma de login</h1>
             <div>

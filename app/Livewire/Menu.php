@@ -10,12 +10,6 @@ class Menu extends Component
     public $menuItems = [];
     public $showLogin = false;
 
-    public function toggleMenu()
-    {
-        $this->isOpen = !$this->isOpen;
-    }
-
-
     public function render()
     {
         return view('livewire.menu');

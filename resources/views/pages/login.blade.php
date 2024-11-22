@@ -9,9 +9,9 @@
         <div class="bg-white shadow-lg rounded-lg p-8 w-full max-w-sm">
             <div class="flex justify-center mb-1">
                 <!-- Logo -->
-                <x-logo />
+                @livewire('logo')
             </div>
-            <x-powered-by />
+            @livewire('powered-by')
 
             <!-- Formulário de login -->
             <form method="POST" action="{{ route('LoginService') }}" class="space-y-4">
