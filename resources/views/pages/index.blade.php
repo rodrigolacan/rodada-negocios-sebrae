@@ -16,19 +16,11 @@
                     <div>Joseph</div>
                 </div>
             </div>
-
-
-            <!-- Mobile Menu Button -->
-            <div class="lg:hidden flex items-center">
-                <div class="flex-shrink-0 flex items-center mr-2">
-                    <x-logo />
-                </div>
-                <!-- Menu -->
-                @livewire('menu', [
-                    'menuItems' => [['href' => '#ofertas', 'text' => 'Ofertas'], ['href' => '#demandas', 'text' => 'Demandas'], ['href' => '#eventos', 'text' => 'Eventos'], ['href' => '#chat', 'text' => 'Chat e Videochamandas'], ['href' => '#relatorios', 'text' => 'Relatórios']],
-                    'showLogin' => false,
-                ])
-            </div>
+            <!-- Menu -->
+            @livewire('menu', [
+                'menuItems' => [['href' => '#ofertas', 'text' => 'Ofertas'], ['href' => '#demandas', 'text' => 'Demandas'], ['href' => '#eventos', 'text' => 'Eventos'], ['href' => '#chat', 'text' => 'Chat e Videochamandas'], ['href' => '#relatorios', 'text' => 'Relatórios']],
+                'showLogin' => false,
+            ])
             <!-- Logo (lado direito) em md e acima -->
             <div class="flex-shrink-0 flex items-center mr-2 hidden lg:block">
                 <x-logo />

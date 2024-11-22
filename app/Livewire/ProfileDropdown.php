@@ -4,6 +4,7 @@ namespace App\Livewire;
 
 use Livewire\Component;
 
+
 class ProfileDropdown extends Component
 {
     public $dropdownVisible = false;
