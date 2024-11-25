@@ -9,7 +9,7 @@
 
         @if ($showLogin)
             <hr class="border-t border-[#D1D5DB]">
-            <a href="{{ route('login_selection') }}"
+            <a href="{{ route('login') }}"
                 class="flex items-center text-lg font-semibold hover:bg-gray-200 rounded-full p-2 transition duration-300">
                 <div class="flex items-center justify-end">
                     <img src="{{ asset('img/avatar.svg') }}" alt="avatar login" class="mr-2 h-6 w-6"> ENTRAR
@@ -48,7 +48,7 @@
 
         @if ($showLogin)
             <hr class="border-t border-[#D1D5DB]">
-            <a href="{{ route('login_selection') }}"
+            <a href="{{ route('login') }}"
                 class="block text-lg font-bold text-right hover:bg-gray-200 rounded-full p-2 transition duration-300">
                 <div class="flex items-center justify-end">
                     <img src="{{ asset('img/avatar.svg') }}" alt="avatar login" class="mr-2 h-6 w-6"> ENTRAR
