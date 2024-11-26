@@ -49,6 +49,8 @@
             </div>
             <!-- Div do Card -->
             @livewire('card')
+            @livewire('detalhes-card')
+            @livewire('reuniao-card')
 
             <!-- Seção Ofertas -->
             <div class="mt-5 flex items-center">

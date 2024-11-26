@@ -58,7 +58,7 @@
         </div>
     @elseif ($viewMode === 'ano')
         {{-- Exibir Meses do Ano --}}
-        <div class="grid grid-cols-4 gap-2">
+        <div class="grid grid-cols-3 gap-2">
             @foreach (range(1, 12) as $mes)
                 <div wire:click="selecionarMes({{ $mes }})"
                     class="p-2 rounded-md text-center cursor-pointer hover:bg-gray-700">
@@ -68,7 +68,7 @@
         </div>        
     @else
         {{-- Exibir Escopo de Anos --}}
-        <div class="grid grid-cols-5 gap-2">
+        <div class="grid grid-cols-3 gap-2">
             @foreach (range($anoAtual - 5, $anoAtual + 5) as $ano)
                 <div wire:click="selecionarAno({{ $ano }})"
                     class="p-2 rounded-md text-center cursor-pointer hover:bg-gray-700">
