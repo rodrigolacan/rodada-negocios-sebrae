@@ -18,7 +18,7 @@
         <div class="flex justify-start font-bold text-sm space-x-2 pl-5 md:pl-0">
             <span>Descrição do produto</span>
         </div>
-        <div class="row-start-6 flex justify-end text-right font-bold text-xs space-x-2 pl-5 md:pl-0 items-center">
+        <div class="row-start-6 flex justify-end text-right font-bold text-xs space-x-2 pl-5 md:pl-0 items-center cursor-pointer" wire:click="agendarReuniao">
             <span>Agende uma reunião com essa empresa</span>
             <img src="{{ asset('img/calendar-rounded.svg') }}" alt="Clock" class="h-8 w-8">
         </div>

@@ -7,7 +7,7 @@
             <!-- Imagem na coluna esquerda -->
             <div class="row-span-4 col-span-1 flex justify-center items-center">
                 <img src="{{ asset('img/imageforchange.svg') }}" alt="Imagem da Empresa"
-                    class="w-[106px] h-[156px] rounded-[15px]">
+                    class="w-full h-auto rounded-2xl mr-4">
             </div>
 
             <!-- Informações na coluna direita -->

@@ -11,6 +11,12 @@ class Card extends Component
         $this->dispatch('openModal');
     }
 
+    public function agendarReuniao()
+    {
+        $this->dispatch('abrirModalReuniao');
+    }
+
+
     public function render()
     {
         return view('livewire.card');
