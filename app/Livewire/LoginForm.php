@@ -15,8 +15,8 @@ class LoginForm extends Component
     public $password;
 
     protected $rules = [
-        'username' => 'required|string',
-        'password' => 'required|string',
+        'username' => 'required|string|max:255',
+        'password' => 'required|string|min:8|max:64', // Adjust length based on your needs
     ];
 
     protected $messages = [
@@ -49,12 +49,19 @@ class LoginForm extends Component
         // Obtém os dados do usuário
         $userData = $this->ldapService->getUserData($this->username);
 
-        // Gera o JWT
         $key = trim(env('APP_KEY'));
-        $payload = $this->jwtService->encodeHS256($userData, $key);
 
-        // Salva o token JWT nos cookies
-        Cookie::queue('CID', $payload, 60); // 60 minutos
+        $payload = [
+            'sub' => $userData['sub'],  // Acessa 'sub' que é o nome de usuário ou outro identificador
+            'email' => $userData['email'],  // Acessa o e-mail do usuário
+            'name' => $userData['name'],  // Acessa o nome do usuário
+            'exp' => now()->addHours(1)->timestamp,  // Define a expiração do token
+            'iat' => now()->timestamp,  // Define o timestamp de criação do token
+        ];
+
+        $token = $this->jwtService->encodeHS256($payload, $key);
+
+        Cookie::queue(Cookie::make('CID', $token, 60, null, null, true, true, false, 'Strict'));
 
         // Redireciona após login bem-sucedido
         return redirect()->route('index');
