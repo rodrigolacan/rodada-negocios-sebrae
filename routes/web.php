@@ -26,4 +26,3 @@ Route::get('/index', [IndexController::class, 'index'])->name('index')->middlewa
 Route::get('/auth/amei/token/{token}', [AmeiTokenValidate::class, 'tokenValidate'])->name('AuthTokenAmei');
 
 Route::get('/login', [LoginAD::class, 'login'])->name('login');
-Route::post('/login', [LoginAD::class, 'loginService'])->name('LoginService');
