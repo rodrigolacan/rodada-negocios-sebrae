@@ -51,7 +51,6 @@
             @livewire('card')
             @livewire('detalhes-card')
             @livewire('reuniao-card')
-
             <!-- Seção Ofertas -->
             <div class="mt-5 flex items-center">
                 <img src="{{ asset('img/point.svg') }}" class="h-6 w-6 mr-2 md:h-8 md:w-8">

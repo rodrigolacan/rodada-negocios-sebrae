@@ -30,7 +30,7 @@
 
             <!-- Botões na última linha -->
             <div class="row-span-1 col-span-1 flex items-center">
-                <button class="flex items-center border text-xs font-bold space-x-2 border border-[#d9d9d9] p-2 rounded-2xl max-w-28 cursor-pointer" wire:click="closeModal">
+                <button class="flex items-center border text-xs font-bold space-x-2 border border-[#d9d9d9] p-2 rounded-3xl max-w-28 cursor-pointer" wire:click="closeModal">
                     <svg xmlns="http://www.w3.org/2000/svg" class="h-5 w-5" viewBox="0 0 20 20" fill="currentColor">
                         <path fill-rule="evenodd"
                             d="M12.293 14.707a1 1 0 001.414-1.414L9.414 10l4.293-4.293a1 1 0 00-1.414-1.414l-5 5a1 1 0 000 1.414l5 5z"

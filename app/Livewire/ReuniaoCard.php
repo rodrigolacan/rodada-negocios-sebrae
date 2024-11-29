@@ -10,11 +10,21 @@ class ReuniaoCard extends Component
     public $data;
     public $horaInicio;
     public $horaFim;
-    public $localizacao = 'virtual'; // 'presencial' ou 'virtual'
+    public $localizacao = 'presencial'; // 'presencial' ou 'virtual'
     public $endereco = '';
     public $link = '';
 
     protected $listeners = ['abrirModalReuniao'];
+
+    // Regras de validação
+    protected $rules = [
+        'data' => 'required|date',
+        'horaInicio' => 'required|date_format:H:i',
+        'horaFim' => 'required|date_format:H:i|after:horaInicio',
+        'localizacao' => 'required|in:presencial,virtual',
+        'endereco' => 'required_if:localizacao,presencial',
+        'link' => 'required_if:localizacao,virtual|url',
+    ];
 
     public function abrirModalReuniao()
     {
@@ -28,17 +38,12 @@ class ReuniaoCard extends Component
 
     public function agendarReuniao()
     {
-        // Validação básica
-        if ($this->localizacao === 'presencial' && !$this->endereco) {
-            $this->addError('endereco', 'Por favor, preencha o endereço.');
-            return;
-        }
-        if ($this->localizacao === 'virtual' && !$this->link) {
-            $this->addError('link', 'Por favor, preencha o link.');
-            return;
-        }
+        // Validação usando o método validate
+        $this->validate();
 
-        // Lógica para salvar os dados da reunião
+        // Lógica para salvar os dados da reunião (você pode adicionar a lógica de persistência aqui)
+
+        // Emissão de evento ou outra ação após o agendamento
         $this->emit('reuniaoAgendada');
         $this->fecharModal();
     }
