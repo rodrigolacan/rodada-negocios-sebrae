@@ -13,7 +13,7 @@
             <div class="flex items-center gap-4 relative">
                 @livewire('profile-dropdown')
                 <div class="font-medium">
-                    <div>Joseph</div>
+                    @livewire('user-profile')
                 </div>
             </div>
             <!-- Menu -->
