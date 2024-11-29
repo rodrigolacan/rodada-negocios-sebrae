@@ -1,28 +1,15 @@
 <!DOCTYPE html>
 <html lang="pt-BR">
 
-<head>
-    <meta charset="UTF-8">
-    <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Template Laravel com Tailwind CSS</title>
-    @vite('resources/css/app.css') <!-- Certifique-se de que o Vite está funcionando -->
-    <link rel="icon" href="{{ asset('img/logo-conectabiz.ico') }}" type="image/x-icon">
-
-</head>
+@yield('head')
 
 <body>
-    <header>
-        @yield('header')
-    </header>
+    @yield('navbar')
 
-    <main>
-        @yield('content')
-    </main>
+    @yield('content')
 
-    <footer class="bg-[#062146] h-[300px] text-white flex flex-col justify-between py-6">
-        @yield('footer')
-    </footer>
-    @vite('resources/js/app.js')
+    @yield('footer')
 </body>
-
+    <script src="https://amei.homolog.kubernetes.sebrae.com.br/auth/js/keycloak.js"></script>
+    @vite('resources/js/keycloack/keycloak.main.js')
 </html>
